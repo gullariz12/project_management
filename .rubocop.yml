@@ -24,6 +24,10 @@ Metrics/MethodLength:
   Max: 10
   Enabled: true
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 # Style Cops
 
 Style/SymbolArray:

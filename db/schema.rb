@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_161032) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_172113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "assigned_tasks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "task_id"
+    t.bigint "project_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_assigned_tasks_on_location_id"
+    t.index ["project_id"], name: "index_assigned_tasks_on_project_id"
+    t.index ["task_id"], name: "index_assigned_tasks_on_task_id"
+    t.index ["user_id"], name: "index_assigned_tasks_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.geography "coords", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}, null: false
+    t.float "longitude", null: false
+    t.float "latitude", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coords"], name: "index_locations_on_coords", using: :gist
+    t.index ["latitude", "longitude"], name: "index_locations_on_latitude_and_longitude"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.text "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.bigint "location_id"
+    t.string "priority", default: "normal", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_tasks_on_location_id"
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

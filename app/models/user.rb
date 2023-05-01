@@ -5,4 +5,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :projects, dependent: :destroy
+  has_many :assigned_tasks, dependent: :destroy
+  has_many :created_tasks, class_name: 'Task', dependent: :destroy
+
+  validates :first_name, :last_name, presence: true
 end
