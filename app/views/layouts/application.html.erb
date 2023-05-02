@@ -8,11 +8,16 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= render 'layouts/navbar' if user_signed_in? %>
+    <%= turbo_frame_tag 'flash-message' do %>
+      <%= render 'layouts/flash_toastr' %>
+    <% end %>
+    </div>
     <main class="container mx-auto mt-28">
       <%= yield %>
     </main>

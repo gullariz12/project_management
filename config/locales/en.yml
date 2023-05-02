@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+
+  controllers:
+    create_success: "%{object_name} is successfully created."
+    update_success: '%{object_name} is successfully updated.'
+    delete_success: '%{object_name} is successfully deleted.'

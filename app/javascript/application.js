@@ -3,3 +3,15 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
+import {far} from "@fortawesome/free-regular-svg-icons"
+import {fas} from "@fortawesome/free-solid-svg-icons"
+import {fab} from "@fortawesome/free-brands-svg-icons"
+import {library} from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-free"
+import toastr from "toastr"
+import jquery from "jquery";
+
+library.add(far, fas, fab)
+window.toastr = toastr
+window.jQuery = jquery
+window.$ = jquery
