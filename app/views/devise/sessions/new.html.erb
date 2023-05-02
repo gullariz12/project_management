@@ -14,12 +14,14 @@
       <div class="field my-5">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter email",
             class: 'rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm' %>
+        <span class="text-error"><%= resource.errors[:email].join(", ") %></span>
       </div>
     </div>
 
     <div class="field">
       <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter password",
           class: 'rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm' %>
+      <span class="text-error"><%= resource.errors[:password].join(", ") %></span>
     </div>
 
     <div class="flex items-center justify-between mt-2 ">

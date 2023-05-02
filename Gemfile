@@ -65,6 +65,12 @@ group :development, :test do
   # Use Rubocop as linter
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '~> 3.37.1'
+  gem 'selenium-webdriver'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
 end
 
 group :development do
