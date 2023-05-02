@@ -1,0 +1,38 @@
+<div id="projects-section">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-xl font-semibold text-gray-900">Projects</h1>
+      <p class="mt-2 text-sm text-gray-700">A list of all the projects.</p>
+    </div>
+  </div>
+  <div class="mt-8 flex flex-col">
+    <div>
+      <div class="block py-2 align-middle w-[1240px] mx-auto max-w-full">
+        <div class="border-t border-t overflow-auto w-full relative pb-12">
+
+          <div class="flex items-center" data-controller="form-modal" data-form-modal-allow-background-close="true" data-form-modal-prevent-default-action-opening="false">
+            <%= link_to new_project_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 mb-2' do %>
+              <%= image_tag('add-project.svg', alt: 'icon', class: 'float-left mt-1') %>
+              <span class="ml-2">Add Project</span>
+            <% end %>
+            <%= tag.turbo_frame id: "action_notice", class: "ml-4 text-green-500" %>
+          </div>
+
+          <div class="w-full h-6 bg-gray-200 rounded-md block mt-2">
+            <% @projects.each_with_index do |project, index| %>
+              <div class="table-row">
+                <%= project.title %>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

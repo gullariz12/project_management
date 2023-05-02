@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render 'layouts/navbar' if user_signed_in? %>
+    <main class="container mx-auto mt-28">
       <%= yield %>
     </main>
   </body>

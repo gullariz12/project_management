@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-209.000000, -505.000000)">
+            <g id="PlusCircle" transform="translate(209.000000, 505.000000)">
+                <rect id="Rectangle" x="0" y="0" width="18" height="18"></rect>
+                <circle id="Oval" stroke="#FFFFFF" stroke-width="2" cx="9" cy="9" r="6.75"></circle>
+                <line x1="6.1875" y1="9.02109375" x2="11.8125" y2="9.02109375" id="Path" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="9.02109375" y1="6.1875" x2="9.02109375" y2="11.8125" id="Path" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+            </g>
+        </g>
+    </g>
+</svg>
