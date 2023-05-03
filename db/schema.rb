@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_203423) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_071215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -56,12 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_203423) do
   create_table "assigned_tasks", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "task_id"
-    t.bigint "project_id"
-    t.bigint "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_assigned_tasks_on_location_id"
-    t.index ["project_id"], name: "index_assigned_tasks_on_project_id"
     t.index ["task_id"], name: "index_assigned_tasks_on_task_id"
     t.index ["user_id"], name: "index_assigned_tasks_on_user_id"
   end
@@ -91,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_203423) do
     t.string "priority", default: "normal", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "title", null: false
     t.index ["location_id"], name: "index_tasks_on_location_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"

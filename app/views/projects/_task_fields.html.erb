@@ -1,0 +1,26 @@
+<div class="nested-fields">
+  <div class="flex">
+    <div class="title-value w-full p-2 border round-md my-2">
+    <div class="grid grid-cols-8 gap-4">
+      <div class="col-span-7">
+        <%= f.label :title, "Title", class:'text-base' %>
+        <%= f.input :title, label: false, placeholder: 'Enter here', input_html: { class: 'w-full p-3 focus:outline-none border-slate-200 rounded-md text-sm', rows: "1" }, autocomplete: 'off' %>
+        <span class="text-error"><%= f.object.errors[:title].join(", ") %></span>
+      </div>
+      <div class="col-span-1">
+        <%= f.label :priority, "Priority", class:'text-base' %>
+        <%= f.input :priority, collection: Task::PRIORITIES.map { |key, value| [value, value] },
+                      include_blank: "Add Priority...", selected: f.object.priority, label: false, placeholder: 'Enter here',
+                      input_html: { class: 'w-full p-3 focus:outline-none border-slate-200 rounded-md text-sm', data: { controller: "select2" } } %>
+        <span class="text-error"><%= f.object.errors[:priority].join(", ") %></span>
+      </div>
+      <div>
+        <%= f.rich_text_area :description, placeholder: "Enter here", class: "w-full" %>
+        <span class="text-error"><%= f.object.errors[:description].join(", ") %></span>
+      </div>
+    </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= link_to_remove_association "Remove Task", f, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 inline-block text-sm' %>
+    </div>
+  </div>
+</div>

@@ -9,9 +9,12 @@ import {fab} from "@fortawesome/free-brands-svg-icons"
 import {library} from "@fortawesome/fontawesome-svg-core"
 import "@fortawesome/fontawesome-free"
 import toastr from "toastr"
-import jquery from "jquery";
+import jquery from "jquery"
+import "@nathanvda/cocoon"
+import select2 from "select2"
 
 library.add(far, fas, fab)
 window.toastr = toastr
 window.jQuery = jquery
 window.$ = jquery
+window.select2 = select2();

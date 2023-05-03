@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
+    @project.tasks.build
   end
 
   def edit; end
@@ -38,7 +39,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title)
+    params.require(:project).permit(:title, tasks_attributes: %i[id title user_id description priority])
   end
 
   def fetch_project

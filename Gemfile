@@ -87,3 +87,5 @@ end
 gem 'activerecord-postgis-adapter'
 gem 'devise'
 gem 'simple_form', '~> 5.2'
+gem 'cocoon'
+gem 'jquery-rails'

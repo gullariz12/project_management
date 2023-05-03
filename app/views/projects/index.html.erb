@@ -8,23 +8,23 @@
   <div class="mt-8 flex flex-col">
     <div>
       <div class="block py-2 align-middle w-[1240px] mx-auto max-w-full">
-        <div class="border-t border-t overflow-auto w-full relative pb-12">
+        <div class="mb-8">
+          <%= link_to new_project_path, class: 'inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mt-4' do %>
+            <%= image_tag('add-project.svg', alt: 'icon', class: 'float-left mt-1') %>
+            <span class="ml-2">Add Project</span>
+          <% end %>
+        </div>
+        <div class="border-t border-t overflow-auto w-full relative pb-12 min-h-[480px]">
 
           <div class="flex items-center">
-            <%= link_to new_project_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 mb-2' do %>
-              <%= image_tag('add-project.svg', alt: 'icon', class: 'float-left mt-1') %>
-              <span class="ml-2">Add Project</span>
-            <% end %>
             <%= tag.turbo_frame id: "action_notice", class: "ml-4 text-green-500" %>
           </div>
 
-          <div class="w-full h-6 bg-gray-200 rounded-md block mt-2">
+          <div class="w-full block mt-2">
             <% @projects.each_with_index do |project, index| %>
-              <div class="table-row">
-                <%= link_to project_path(project), class: 'py-2 px-4 rounded mt-4 mb-2' do %>
-                  <span class="ml-2"><%= project.title %></span>
-                <% end %>
-              </div>
+              <%= link_to project_path(project), class: ' bg-gray-200 hover:bg-gray-300 block py-2 px-2  rounded-md my-2' do %>
+                <span class="ml-2"><%= project.title %></span>
+              <% end %>
             <% end %>
             </div>
           </div>
