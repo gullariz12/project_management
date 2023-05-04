@@ -1,0 +1,44 @@
+<%= simple_form_for([@project, @task]) do |f| %>
+  <div class="flex">
+    <div class="title-value w-full p-2 border round-md my-2">
+      <div class="grid grid-cols-8 gap-4">
+        <div class="col-span-6">
+          <%= f.label :title, "Title", class:'text-base' %>
+          <%= f.input :title, label: false, placeholder: 'Enter here', input_html: { class: 'w-full p-3 focus:outline-none border-slate-200 rounded-md text-sm', rows: "1" }, autocomplete: 'off' %>
+          <span class="text-error"><%= f.object.errors[:title].join(", ") %></span>
+        </div>
+
+        <div class="col-span-1">
+          <% if @task.persisted? %>
+            <%= turbo_frame_tag 'assignee-drop-down' do %>
+              <%= label_tag :assignee, "Assignee", class:'text-base' %>
+              <%= select_tag :assignee, options_for_select(User.all.map { |user| [user.name, user.id] }), id: "assignee-#{@task.id}", include_blank: @task.assigned_task&.user&.name.presence || "Add Assignee...",
+                          class: 'w-full p-3 focus:outline-none border-slate-200 rounded-md text-sm', selected: @task.assigned_task&.user_id,
+                          data: { controller: "tasks", tasks_url_value: assign_project_task_path(@project, @task), "select2-id": "#{dom_id(@task, 'assignee')}" } %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="col-span-1">
+          <%= f.label :priority, "Priority", class:'text-base' %>
+          <%= f.input :priority, collection: Task::PRIORITIES.map { |key, value| [value, value] },
+                        include_blank: "Add Priority...", selected: f.object.priority, label: false, placeholder: 'Enter here',
+                        input_html: { class: 'w-full p-3 focus:outline-none border-slate-200 rounded-md text-sm',
+                        data: { controller: "select2", "select2-id": "#{dom_id(@task, 'priority')}" } } %>
+          <span class="text-error"><%= f.object.errors[:priority].join(", ") %></span>
+        </div>
+
+        <div class="col-span-6">
+          <%= f.rich_text_area :description, placeholder: "Enter here", class: "w-full" %>
+          <span class="text-error"><%= f.object.errors[:description].join(", ") %></span>
+        </div>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <div class="actions">
+        <%= f.button :button, @task.persisted? ? "Update task" : "Add task", data: { turbo_frame: dom_id(@project) },
+            class: "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" %>
+      </div>
+    </div>
+  </div>
+<% end %>

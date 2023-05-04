@@ -11,4 +11,8 @@ class User < ApplicationRecord
   has_many :created_tasks, class_name: 'Task', dependent: :destroy
 
   validates :first_name, :last_name, presence: true
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

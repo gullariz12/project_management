@@ -1,0 +1,46 @@
+<div class="bg-gray-100 hover:bg-gray-300 block py-2 px-2  rounded-md my-2">
+  <div class="grid grid-cols-8 gap-4">
+    <div class="col-span-4">
+      <div class="font-bold">
+        <%= task.title %>
+        <%= link_to edit_project_task_path(@project, task), data: { class: "hover:bg-inherit visited:text-black hover:bg-inherit visited:bg-inherit", turbo_frame: "#{dom_id(task)}" } do %>
+          <span class="ml-2"><i class="fa-solid fa-pencil"></i></span>
+        <% end %>
+      </div>
+      <div class="block">
+        <%= task.description.to_plain_text %>
+      </div>
+    </div>
+    <div class="col-span-1">
+      <% if task.assigned_task %>
+        <%= task.assigned_task.user.name %>
+      <% end %>
+    </div>
+    <div class="col-span-1 -my-1">
+      <i class="fa-solid fa-flag text-xl mt-2 <%= priority_color(task.priority) %>"></i>
+      <span class="pl-2 pr-3 -my-1 py-1"><%= task.priority %></span>
+    </div>
+    <div class="col-span-3">
+      <% task.description&.body&.attachments&.each do |attachment| %>
+        <% if attachment.image? %>
+          <%= image_tag attachment.variant(resize: "300x300") %>
+        <% elsif attachment.video? %>
+          <%= video_tag url_for(attachment.attachable),
+                        preload: "auto",
+                        controls: "controls",
+                        width: "640",
+                        height: "360" %>
+        <% else %>
+          <figcaption class="attachment__caption">
+            <% if caption = attachment.try(:caption) %>
+              <%= caption %>
+            <% else %>
+              <span class="attachment__name"><%= attachment.filename %></span>
+              <span class="attachment__size"><%= number_to_human_size attachment.byte_size %></span>
+            <% end %>
+          </figcaption>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

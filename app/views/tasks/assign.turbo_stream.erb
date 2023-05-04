@@ -1,0 +1,6 @@
+<%= turbo_stream.update 'assignee-drop-down' do %>
+  <%= label_tag :assignee, "Assignee", class:'text-base' %>
+  <%= select_tag :assignee, options_for_select(User.all.map { |user| [user.name, user.id] }), id: "assignee-#{@task.id}", include_blank: @task.assigned_task&.user&.name.presence || "Add Assignee...",
+              class: 'w-full p-3 focus:outline-none border-slate-200 rounded-md text-sm', selected: @task.assigned_task&.user_id,
+              data: { controller: "tasks", tasks_url_value: assign_project_task_path(@project, @task), "select2-id": "#{dom_id(@task, 'assignee')}" } %>
+<% end %>

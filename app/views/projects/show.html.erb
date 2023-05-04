@@ -1,22 +1,22 @@
 <%= turbo_frame_tag dom_id(@project) do %>
-  <%= link_to "Back", projects_path, data: { turbo_frame: '_top' }, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+  <%= link_to "Back", projects_path, data: { turbo_frame: '_top' }, class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded float-right' %>
+
+  <%= link_to "Add new task", new_project_task_path(@project), data: { turbo_frame: 'new_task_section' }, class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded' %>
+
+  <%= turbo_frame_tag "new_task_section" %>
 
   <%= turbo_frame_tag dom_id(@project, 'title') do %>
-    <span class="flex font-bold mt-3 text-xl">
+    <span class="block font-bold mt-6 text-xl">
       <%= @project.title %>
       <%= link_to edit_project_path(@project), data: { class: "hover:bg-inherit visited:text-black hover:bg-inherit visited:bg-inherit", turbo_frame: "#{dom_id(@project, 'title')}" } do %>
         <span class="ml-2"><i class="fa-solid fa-pencil"></i></span>
       <% end %>
     </span>
+    <hr class="mb-6">
   <% end %>
-
   <% @project.tasks.each do |task| %>
-    <div>
-      <span>
-        <%= task.title %>
-        <%= task.priority %>
-        <%= task.description %>
-      </span>
-    </div>
+    <%= turbo_frame_tag dom_id(task) do %>
+      <%= render task %>
+    <% end %>
   <% end %>
 <% end %>

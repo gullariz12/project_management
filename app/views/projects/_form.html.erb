@@ -1,4 +1,6 @@
-<%= link_to "Back", projects_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+<% unless @project.persisted? %>
+  <%= link_to "Back", projects_path, class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded' %>
+<% end %>
 
 <%= simple_form_for @project do |f| %>
   <div class="card-body p-md-4 p-2">
@@ -13,12 +15,12 @@
           <%= render "task_fields", f: task %>
         <% end %>
         <div class="links">
-          <%= link_to_add_association 'Add Task', f, :tasks, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded inline-block mt-2' %>
+          <%= link_to_add_association 'Add Task', f, :tasks, class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded inline-block mt-2' %>
         </div>
       </div>
     <% end %>
     <div class="text-right mt-4">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save</button>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Save</button>
     </div>
   </div>
 <% end %>
