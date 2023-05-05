@@ -2,6 +2,7 @@
 
 class TasksController < ApplicationController
   before_action :fetch_task, only: %i[edit update show destroy assign]
+  after_action :add_location, only: %i[create update]
 
   def show; end
 
@@ -42,9 +43,9 @@ class TasksController < ApplicationController
   end
 
   def assign
-    assigned_task = AssignedTask.where(task: @task).first_or_create
+    assigned_task = AssignedTask.find_or_initialize_by(task: @task)
 
-    assigned_task.update(user_id: params[:user_id])
+    assigned_task.update!(user_id: params[:user_id])
   end
 
   private
@@ -59,5 +60,9 @@ class TasksController < ApplicationController
 
   def project
     @project ||= Project.find(params[:project_id])
+  end
+
+  def add_location
+    @task.add_location(params[:location])
   end
 end

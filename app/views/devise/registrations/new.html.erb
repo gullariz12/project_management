@@ -34,7 +34,7 @@
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter password",
           class: 'rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm' %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em class="text-sm/[8px] text-gray-700">(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
       <span class="text-error"><%= resource.errors[:password].join(", ") %></span>
     </div>

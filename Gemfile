@@ -85,8 +85,9 @@ group :development do
 end
 
 gem 'activerecord-postgis-adapter'
-gem 'devise'
-gem 'simple_form', '~> 5.2'
 gem 'cocoon'
+gem 'devise'
+gem 'geocoder'
 gem 'jquery-rails'
-gem "requestjs-rails"
+gem 'requestjs-rails'
+gem 'simple_form', '~> 5.2'

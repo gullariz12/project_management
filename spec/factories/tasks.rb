@@ -5,5 +5,6 @@ FactoryBot.define do
     user { create(:user) }
     project { create(:project) }
     location { create(:location) }
+    title { Faker::Lorem.sentence }
   end
 end

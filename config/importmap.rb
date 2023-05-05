@@ -16,5 +16,7 @@ pin '@fortawesome/free-regular-svg-icons', to: 'https://ga.jspm.io/npm:@fortawes
 pin '@fortawesome/free-solid-svg-icons', to: 'https://ga.jspm.io/npm:@fortawesome/free-solid-svg-icons@6.4.0/index.mjs'
 pin 'toastr', to: 'https://ga.jspm.io/npm:toastr@2.1.4/toastr.js'
 pin 'jquery', to: 'https://ga.jspm.io/npm:jquery@3.6.4/dist/jquery.js'
-pin "@nathanvda/cocoon", to: "https://ga.jspm.io/npm:@nathanvda/cocoon@1.2.14/cocoon.js"
-pin "select2", to: "https://ga.jspm.io/npm:select2@4.1.0-rc.0/dist/js/select2.js"
+pin '@nathanvda/cocoon', to: 'https://ga.jspm.io/npm:@nathanvda/cocoon@1.2.14/cocoon.js'
+pin 'select2', to: 'https://ga.jspm.io/npm:select2@4.1.0-rc.0/dist/js/select2.js'
+pin 'leaflet', to: 'https://ga.jspm.io/npm:leaflet@1.9.3/dist/leaflet-src.js'
+pin 'leaflet-css', to: 'https://ga.jspm.io/npm:leaflet-css@0.1.0/dist/leaflet.css.min.js'

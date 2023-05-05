@@ -1,6 +1,24 @@
 <div class="bg-gray-100 hover:bg-gray-300 block py-2 px-2  rounded-md my-2">
   <div class="grid grid-cols-8 gap-4">
-    <div class="col-span-4">
+    <div class="col-span-3">
+      <h3 class="font-bold">Title + Description</h3>
+    </div>
+    <div class="col-span-1">
+      <h3 class="font-bold">Assignee</h3>
+    </div>
+    <div class="col-span-1">
+      <h3 class="font-bold">Priority</h3>
+    </div>
+    <div class="col-span-1">
+      <h3 class="font-bold">Location</h3>
+    </div>
+    <div class="col-span-2">
+      <h3 class="font-bold">Attachements</h3>
+    </div>
+  </div>
+  <hr/>
+  <div class="grid grid-cols-8 gap-4 mt-1">
+    <div class="col-span-3">
       <div class="font-bold">
         <%= task.title %>
         <%= link_to edit_project_task_path(@project, task), data: { class: "hover:bg-inherit visited:text-black hover:bg-inherit visited:bg-inherit", turbo_frame: "#{dom_id(task)}" } do %>
@@ -18,9 +36,14 @@
     </div>
     <div class="col-span-1 -my-1">
       <i class="fa-solid fa-flag text-xl mt-2 <%= priority_color(task.priority) %>"></i>
-      <span class="pl-2 pr-3 -my-1 py-1"><%= task.priority %></span>
+      <span class="pl-2 pr-3 -my-1 -mt-1 text-base"><%= task.priority.titleize %></span>
     </div>
-    <div class="col-span-3">
+    <div class="col-span-1 -my-1">
+      <% if task.location %>
+        <%= task.location.nearest_address %>
+      <% end %>
+    </div>
+    <div class="col-span-2">
       <% task.description&.body&.attachments&.each do |attachment| %>
         <% if attachment.image? %>
           <%= image_tag attachment.variant(resize: "300x300") %>

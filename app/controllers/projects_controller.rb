@@ -39,7 +39,8 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, tasks_attributes: %i[id title user_id description priority])
+    params.require(:project).permit(:title,
+                                    tasks_attributes: %i[id title user_id description priority])
   end
 
   def fetch_project

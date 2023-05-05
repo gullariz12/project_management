@@ -15,4 +15,10 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  def assigned_task_locations
+    assigned_tasks.includes(task: :location).map do |at|
+      [at.task.location&.latitude, at.task.location&.longitude].compact_blank
+    end.compact_blank
+  end
 end

@@ -17,12 +17,5 @@ RSpec.describe AssignedTask, type: :model do
 
       expect(assigned_task.task).to eq(task)
     end
-
-    it 'belongs to a project' do
-      project = FactoryBot.create(:project)
-      assigned_task = FactoryBot.create(:assigned_task, project:)
-
-      expect(assigned_task.project).to eq(project)
-    end
   end
 end

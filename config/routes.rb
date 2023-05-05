@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :assigned_tasks, only: %i[index]
 end
