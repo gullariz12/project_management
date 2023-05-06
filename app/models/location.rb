@@ -8,7 +8,7 @@ class Location < ApplicationRecord
   before_validation :set_coords_and_address
 
   def nearest_address
-    results = Geocoder.search([self.coords.y, self.coords.x])
+    results = Geocoder.search([coords.y, coords.x])
 
     results.first.address
   end
@@ -18,6 +18,6 @@ class Location < ApplicationRecord
   def set_coords_and_address
     self.coords = "POINT(#{longitude} #{latitude})"
     self.coords = "SRID=4326;#{coords}"
-    self.address = nearest_address
+    self.address = nearest_address if coords
   end
 end

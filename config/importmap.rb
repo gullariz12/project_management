@@ -20,3 +20,4 @@ pin '@nathanvda/cocoon', to: 'https://ga.jspm.io/npm:@nathanvda/cocoon@1.2.14/co
 pin 'select2', to: 'https://ga.jspm.io/npm:select2@4.1.0-rc.0/dist/js/select2.js'
 pin 'leaflet', to: 'https://ga.jspm.io/npm:leaflet@1.9.3/dist/leaflet-src.js'
 pin 'leaflet-css', to: 'https://ga.jspm.io/npm:leaflet-css@0.1.0/dist/leaflet.css.min.js'
+pin 'leaflet-geosearch', to: 'https://ga.jspm.io/npm:leaflet-geosearch@3.8.0/dist/geosearch.module.js'
