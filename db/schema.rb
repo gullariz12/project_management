@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_071215) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_06_101129) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_071215) do
     t.float "latitude", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "address"
     t.index ["coords"], name: "index_locations_on_coords", using: :gist
     t.index ["latitude", "longitude"], name: "index_locations_on_latitude_and_longitude"
   end

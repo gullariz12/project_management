@@ -5,18 +5,19 @@ class Location < ApplicationRecord
 
   validates :longitude, :latitude, presence: true
 
-  before_validation :set_coords
+  before_validation :set_coords_and_address
 
   def nearest_address
-    results = Geocoder.search([coords.y, coords.x])
+    results = Geocoder.search([self.coords.y, self.coords.x])
 
     results.first.address
   end
 
   private
 
-  def set_coords
+  def set_coords_and_address
     self.coords = "POINT(#{longitude} #{latitude})"
     self.coords = "SRID=4326;#{coords}"
+    self.address = nearest_address
   end
 end

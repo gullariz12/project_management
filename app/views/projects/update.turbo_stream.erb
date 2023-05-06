@@ -1,5 +1,5 @@
 <%= turbo_stream.update dom_id(@project, 'title') do %>
-  <span>
+  <span class='block font-bold mt-6 text-xl'>
     <%= @project.title %>
     <%= link_to edit_project_path(@project), data: { class: "hover:bg-inherit visited:text-black hover:bg-inherit visited:bg-inherit", turbo_frame: "#{dom_id(@project, 'title')}" } do %>
       <span class="ml-2"><i class="fa-solid fa-pencil"></i></span>
